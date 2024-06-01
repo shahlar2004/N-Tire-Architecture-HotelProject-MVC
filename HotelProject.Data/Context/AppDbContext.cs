@@ -7,30 +7,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
 using System.Reflection;
 
 namespace HotelProject.Data.Context
 {
-    public class AppDbContext:IdentityDbContext<AppUser, AppRole, Guid, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken>
+    public class AppDbContext:IdentityDbContext<AppUser,Role,Guid>
     {
         public AppDbContext()
         {
 
         }
-        public AppDbContext(DbContextOptions options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
         }
+
+        DbSet<Image> Images { get; set; }
+        DbSet<Services> Services { get; set; }
+        DbSet<Status> Statuses { get; set; }
+        DbSet<Room> Rooms { get; set; }
+        DbSet<RoomCategory> RoomsCategory { get; set;}
+        DbSet<Country> Countries { get; set; }
+        DbSet<Booking> Bookings { get; set; }   
+        DbSet<HotelContact> HotelContacts { get; set; }
+        DbSet<AboutUs> AboutUs { get; set; }    
+        DbSet<LuxuryLiving> LuxuryLivings { get; set; }
+        DbSet<Video> Videos { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.ApplyConfiguration(new ArticleMap()); // bu sekilde tek tek daxil etmekvaxt itkisi oldugundan asagidaki kimi elave edilir.
-
-
-            base.OnModelCreating(modelBuilder); //sonradan elave etdik: identity
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 

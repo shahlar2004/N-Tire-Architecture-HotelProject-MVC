@@ -1,4 +1,8 @@
+using HotelProject.Data.Context;
 using HotelProject.Data.Extensions;
+using HotelProject.Entity.Entities;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace HotelProject.Web
@@ -14,6 +18,25 @@ namespace HotelProject.Web
             builder.Services.AddControllersWithViews();
 
             builder.Services.LoadDataLayerExtension(builder.Configuration);
+
+            //builder.Services.AddDbContext<AppDbContext>(opt =>
+            //{
+            //    opt.UseSqlServer(builder.Configuration.GetConnectionString("Key"));
+            //});
+            //builder.Services.AddIdentity<AppUser, IdentityRole>().
+            //    AddEntityFrameworkStores<AppDbContext>();
+
+
+
+            builder.Services.AddIdentity<AppUser, Role>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+            })
+           .AddEntityFrameworkStores<AppDbContext>()
+           .AddDefaultTokenProviders();
+
 
             var app = builder.Build();
 

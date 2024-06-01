@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Entity.Entities
 {
-    internal class AccountThing:EntityBase
+    public class Status:EntityBase
     {
-        public string Title { get; set; }   
-        public int Count { get; set; }
+        public string Name { get; set; }
+        public ICollection<AppUser>? Users { get; set; }
     }
 }

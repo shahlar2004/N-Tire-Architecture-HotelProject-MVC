@@ -9,14 +9,11 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Data.Mapping
 {
-    public class UserClaimMap : IEntityTypeConfiguration<AppUserClaim>
+    public class RoomMap : IEntityTypeConfiguration<Room>
     {
-        public void Configure(EntityTypeBuilder<AppUserClaim> builder)
+        public void Configure(EntityTypeBuilder<Room> builder)
         {
-            builder.HasKey(uc => uc.Id);
-
-            // Maps to the AspNetUserClaims table
-            builder.ToTable("AspNetUserClaims");
+            builder.HasKey(x => new { x.CountryId, x.RoomCategoryId });
         }
     }
 }

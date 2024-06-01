@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Entity.Entities
 {
-    public class Services:EntityBase
+    public class Video:EntityBase
     {
-        public string IconLink { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; } 
+        public string FileName { get; set; }
+        public string FileType { get; set; }
 
+        public ICollection<Video> Videos { get; set;}
     }
 }

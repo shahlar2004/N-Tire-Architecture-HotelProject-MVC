@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Entity.Entities
 {
-    public class AppUserClaim: IdentityUserClaim<Guid>
+    public class Role:IdentityRole<Guid>
     {
     }
 }
