@@ -11,7 +11,6 @@ namespace HotelProject.Entity.Entities
     {
         public string FileName { get; set; }
         public string FileType { get; set; }
-
         public ICollection<Video> Videos { get; set;}
     }
 }

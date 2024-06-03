@@ -1,8 +1,10 @@
 using HotelProject.Data.Context;
 using HotelProject.Data.Extensions;
+using HotelProject.Service.Extensions;
 using HotelProject.Entity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+
 
 
 namespace HotelProject.Web
@@ -18,6 +20,7 @@ namespace HotelProject.Web
             builder.Services.AddControllersWithViews();
 
             builder.Services.LoadDataLayerExtension(builder.Configuration);
+            builder.Services.LoadServiceLayerExtension();
 
             //builder.Services.AddDbContext<AppDbContext>(opt =>
             //{
@@ -38,6 +41,28 @@ namespace HotelProject.Web
            .AddDefaultTokenProviders();
 
 
+
+            builder.Services.ConfigureApplicationCookie(config =>
+            {
+                config.LoginPath = new PathString("/Admin/Auth/Login");
+                config.LogoutPath = new PathString("/Admin/Auth/Logout");
+                config.Cookie = new CookieBuilder()
+                {
+                    Name = "HotelProject",
+                    HttpOnly = true,
+                    SameSite = SameSiteMode.Strict,
+                    SecurePolicy = CookieSecurePolicy.SameAsRequest
+                };
+
+                config.SlidingExpiration = true;
+                config.ExpireTimeSpan = TimeSpan.FromDays(1);
+                config.AccessDeniedPath = new PathString("/Admin/Auth/AccessDenied");
+
+            });
+
+
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -55,9 +80,17 @@ namespace HotelProject.Web
 
             app.UseAuthorization();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapAreaControllerRoute
+                (
+                    name: "Admin",
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Auth}/{action=Login}/{id?}"
+                );
+
+                endpoints.MapDefaultControllerRoute();
+            });
 
             app.Run();
         }
