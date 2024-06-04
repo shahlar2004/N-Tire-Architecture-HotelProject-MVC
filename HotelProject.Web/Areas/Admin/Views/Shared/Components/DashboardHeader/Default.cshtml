@@ -26,16 +26,31 @@
         <li>
             <a asp-area="Admin" asp-controller="User" asp-action="Profile" class="dropdown-item">
                 <i class="bx bx-user me-2"></i>
-                <span class="align-middle">Mənim Profilim</span>
+                <span class="align-middle">My Profile</span>
             </a>
         </li>
         <li>
             <div class="dropdown-divider"></div>
         </li>
 
+
+
         <li>
-            <div class="dropdown-divider"></div>
+            <a asp-area="Admin" asp-controller="Auth" asp-action="Logout" class="dropdown-item">
+                <i class="fa-solid fa-envelope me-2"></i>
+                <span class="align-middle">    Messages</span>
+            </a>
         </li>
+
+        <li>
+            <a asp-area="Admin" asp-controller="Auth" asp-action="Logout" class="dropdown-item">
+                <i class="fa-solid fa-bell me-2"></i>
+                <span class="align-middle">    Notifications</span>
+            </a>
+        </li>
+
+        
+
         <li>
             <a asp-area="Admin" asp-controller="Auth" asp-action="Logout" class="dropdown-item">
                 <i class="bx bx-power-off me-2"></i>

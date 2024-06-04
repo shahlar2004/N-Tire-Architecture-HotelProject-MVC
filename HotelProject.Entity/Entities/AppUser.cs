@@ -21,7 +21,7 @@ namespace HotelProject.Entity.Entities
 
         public Guid? ImageId { get; set; }
         public Image Image { get; set; }
-        public Guid StatusId { get; set; }
+        public Guid? StatusId { get; set; }
         public Status Status { get; set; }
 
 

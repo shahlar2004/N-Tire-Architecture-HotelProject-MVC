@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240531100704_ModelEnding")]
-    partial class ModelEnding
+    [Migration("20240604131523_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,7 +134,7 @@ namespace HotelProject.Data.Migrations
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("StatusId")
+                    b.Property<Guid?>("StatusId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TwitterLink")
@@ -167,6 +167,58 @@ namespace HotelProject.Data.Migrations
                     b.HasIndex("StatusId");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "d41c4f66-28db-4213-b902-7569c91a4326",
+                            Email = "admin@gmail.com",
+                            EmailConfirmed = false,
+                            FaceBookLink = "#",
+                            FirstName = "Jako",
+                            ImageId = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
+                            InstaLink = "#",
+                            LastName = "Ismo",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@GMAIL.COM",
+                            NormalizedUserName = "ADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJccWVayb/AsIxDp0yMDkCEsbxgfHzp1sgWmi20Jr9zaWvf7t+B/MJ8bZXMY65vMGw==",
+                            PhoneNumber = "+905439999988",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "0f6529c5-94b3-4a44-bcdb-cd4e2fc50c59",
+                            TwitterLink = "#",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@gmail.com",
+                            YoutubeLink = "#"
+                        },
+                        new
+                        {
+                            Id = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
+                            AccessFailedCount = 0,
+                            BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ConcurrencyStamp = "cbe156bf-367f-40cc-a130-e24b04cc1fba",
+                            Email = "superadmin@gmail.com",
+                            EmailConfirmed = false,
+                            FaceBookLink = "#",
+                            FirstName = "Jako",
+                            ImageId = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
+                            InstaLink = "#",
+                            LastName = "Ismo",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "SUPERADMIN@GMAIL.COM",
+                            NormalizedUserName = "SUPERADMIN@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGgHFlq9DMK7kAB59ZXdqLnkk1+aECifVsU0EOiXyRKumRbPxBp1pnKzHMXssUK10A==",
+                            PhoneNumber = "+905439999988",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "ad2e28c6-af72-47f7-b7bf-2c9a26265ba2",
+                            TwitterLink = "#",
+                            TwoFactorEnabled = false,
+                            UserName = "superadmin@gmail.com",
+                            YoutubeLink = "#"
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Booking", b =>
@@ -371,6 +423,17 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Images");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
+                            CreatedBy = "Shahlar Ismayilov",
+                            CreatedDate = new DateTime(2024, 6, 4, 17, 15, 22, 949, DateTimeKind.Local).AddTicks(2981),
+                            FileName = "Images/BlogPhoto",
+                            FileType = "Jpg",
+                            isDeleted = false
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.LuxuryLiving", b =>
@@ -448,6 +511,29 @@ namespace HotelProject.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"),
+                            ConcurrencyStamp = "d27689e7-cd6f-440e-a1d8-df8767e7dd0d",
+                            Name = "Superadmin",
+                            NormalizedName = "SUPERADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("4380fcf7-df75-485f-888a-d7715be71026"),
+                            ConcurrencyStamp = "647e45a8-a712-4ffa-9d24-773d3548bf6c",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"),
+                            ConcurrencyStamp = "1e087496-8edc-42a9-8bc5-01a525c8bacc",
+                            Name = "User",
+                            NormalizedName = "USER"
+                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Room", b =>
@@ -768,11 +854,19 @@ namespace HotelProject.Data.Migrations
                     b.Property<Guid>("RoleId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUserRole<Guid>");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
@@ -794,6 +888,25 @@ namespace HotelProject.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("HotelProject.Entity.Entities.UserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>");
+
+                    b.HasDiscriminator().HasValue("UserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
+                            RoleId = new Guid("4380fcf7-df75-485f-888a-d7715be71026")
+                        },
+                        new
+                        {
+                            UserId = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
+                            RoleId = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4")
+                        });
+                });
+
             modelBuilder.Entity("HotelProject.Entity.Entities.AppUser", b =>
                 {
                     b.HasOne("HotelProject.Entity.Entities.Image", "Image")
@@ -802,9 +915,7 @@ namespace HotelProject.Data.Migrations
 
                     b.HasOne("HotelProject.Entity.Entities.Status", "Status")
                         .WithMany("Users")
-                        .HasForeignKey("StatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("StatusId");
 
                     b.Navigation("Image");
 
