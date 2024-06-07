@@ -20,7 +20,7 @@ namespace HotelProject.Entity.Entities
         public RoomCategory RoomCategory { get; set; }
         public Guid CountryId { get; set; } 
         public Country Country { get; set; }
-        public ICollection<Room> Rooms { get; set; }
+        public ICollection<Booking> Rooms { get; set; }
 
 
     }

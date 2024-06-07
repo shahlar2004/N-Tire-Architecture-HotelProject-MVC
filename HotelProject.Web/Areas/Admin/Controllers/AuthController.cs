@@ -1,5 +1,4 @@
-﻿using AspNetCore;
-using HotelProject.Entity.DTOs.Users;
+﻿using HotelProject.Entity.DTOs.Users;
 using HotelProject.Entity.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -16,7 +15,7 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             this.userManager = userManager;
-            this.signInManager = signInManager;
+            this.signInManager   = signInManager;
         }
 
 
@@ -26,7 +25,6 @@ namespace HotelProject.Web.Areas.Admin.Controllers
             return View();
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginDto request)
         {
@@ -74,6 +72,16 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         }
 
 
-        
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Auth", new { Area = "Admin" });
+        }
+
+
+
+
     }
 }

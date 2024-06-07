@@ -177,7 +177,6 @@ namespace HotelProject.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    VideoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -189,11 +188,6 @@ namespace HotelProject.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Videos", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Videos_Videos_VideoId",
-                        column: x => x.VideoId,
-                        principalTable: "Videos",
-                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -388,8 +382,6 @@ namespace HotelProject.Data.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     isInternet = table.Column<bool>(type: "bit", nullable: false),
                     LuxuryLivingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    RoomCategoryId1 = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    RoomCountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -419,11 +411,6 @@ namespace HotelProject.Data.Migrations
                         principalTable: "RoomsCategory",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_Rooms_RoomCountryId_RoomCategoryId1",
-                        columns: x => new { x.RoomCountryId, x.RoomCategoryId1 },
-                        principalTable: "Rooms",
-                        principalColumns: new[] { "CountryId", "RoomCategoryId" });
                 });
 
             migrationBuilder.CreateTable(
@@ -464,23 +451,23 @@ namespace HotelProject.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"), "1e087496-8edc-42a9-8bc5-01a525c8bacc", "User", "USER" },
-                    { new Guid("4380fcf7-df75-485f-888a-d7715be71026"), "647e45a8-a712-4ffa-9d24-773d3548bf6c", "Admin", "ADMIN" },
-                    { new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"), "d27689e7-cd6f-440e-a1d8-df8767e7dd0d", "Superadmin", "SUPERADMIN" }
+                    { new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"), "dd0ee23c-6bf6-4355-ba92-8472599d6bc9", "User", "USER" },
+                    { new Guid("4380fcf7-df75-485f-888a-d7715be71026"), "d8c515ee-de98-4b30-9f1b-6f6d410c7507", "Admin", "ADMIN" },
+                    { new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"), "da207bc8-833e-441f-9ef9-75ad0c5534a6", "Superadmin", "SUPERADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Images",
                 columns: new[] { "Id", "CreatedBy", "CreatedDate", "DeletedBy", "DeletedDate", "FileName", "FileType", "ModifiedBy", "ModifiedDate", "isDeleted" },
-                values: new object[] { new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "Shahlar Ismayilov", new DateTime(2024, 6, 4, 17, 15, 22, 949, DateTimeKind.Local).AddTicks(2981), null, null, "Images/BlogPhoto", "Jpg", null, null, false });
+                values: new object[] { new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "Shahlar Ismayilov", new DateTime(2024, 6, 7, 11, 11, 1, 841, DateTimeKind.Local).AddTicks(2321), null, null, "Images/BlogPhoto", "Jpg", null, null, false });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FaceBookLink", "FirstName", "ImageId", "InstaLink", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StatusId", "TwitterLink", "TwoFactorEnabled", "UserName", "YoutubeLink" },
                 values: new object[,]
                 {
-                    { new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "cbe156bf-367f-40cc-a130-e24b04cc1fba", "superadmin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEGgHFlq9DMK7kAB59ZXdqLnkk1+aECifVsU0EOiXyRKumRbPxBp1pnKzHMXssUK10A==", "+905439999988", false, "ad2e28c6-af72-47f7-b7bf-2c9a26265ba2", null, "#", false, "superadmin@gmail.com", "#" },
-                    { new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "d41c4f66-28db-4213-b902-7569c91a4326", "admin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEJccWVayb/AsIxDp0yMDkCEsbxgfHzp1sgWmi20Jr9zaWvf7t+B/MJ8bZXMY65vMGw==", "+905439999988", false, "0f6529c5-94b3-4a44-bcdb-cd4e2fc50c59", null, "#", false, "admin@gmail.com", "#" }
+                    { new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "79083a5d-6f72-446e-a650-d3de48ef1549", "superadmin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEBzLkAVJ41qBDvRrCBXmjr2VGRqeNqKdIIU68taH2pHbkkZB0W9KhizG21dPP3sA0A==", "+905439999988", false, "d57a86b6-5e8d-436e-8d86-1d14426c90f8", null, "#", false, "superadmin@gmail.com", "#" },
+                    { new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1c0dd479-a780-4cf9-841c-e3643625a406", "admin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEHsSumBWN1N+MF3fU/qQhM+TsmJ0VTYBWxPHbWO+uVLvHf1YW4kHWrOgZqCEOKdMOg==", "+905439999988", false, "e96ebed1-59c4-48b4-8ede-4dd89a2bdb47", null, "#", false, "admin@gmail.com", "#" }
                 });
 
             migrationBuilder.InsertData(
@@ -560,16 +547,6 @@ namespace HotelProject.Data.Migrations
                 name: "IX_Rooms_RoomCategoryId",
                 table: "Rooms",
                 column: "RoomCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Rooms_RoomCountryId_RoomCategoryId1",
-                table: "Rooms",
-                columns: new[] { "RoomCountryId", "RoomCategoryId1" });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Videos_VideoId",
-                table: "Videos",
-                column: "VideoId");
         }
 
         /// <inheritdoc />

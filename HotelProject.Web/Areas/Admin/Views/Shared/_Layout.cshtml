@@ -90,6 +90,7 @@
         <style>
             a:hover{
                 cursor:pointer !important;
+                text-decoration: none !important;
             }
         </style>
 
@@ -177,37 +178,50 @@
     <!-- Front Pages -->
 
     <li class="menu-header small text-uppercase">
-      <span class="menu-header-text">Səhifə İdarəetməsi</span>
+      <span class="menu-header-text">Rooms Management</span>
     </li>
     <!-- Apps -->
     <li class="menu-item">
-          <a asp-area="Admin" asp-controller="Article" asp-action="Index" target="_blank" class="menu-link">
-         <i class='bx bx-paper-plane'></i>
-         <div style="margin-left:8px" data-i18n="Email">Məqalə İdarəetməsi</div>
+          <a target="_blank" class="menu-link">
+         <i class="fa-sharp fa-solid fa-people-roof"></i>
+         <div style="margin-left:8px" data-i18n="Email">Rooms</div>
       </a>
     </li>
 
     <li class="menu-item">
-        <a asp-area="Admin" asp-controller="Category" asp-action="Index" target="_blank" class="menu-link">
+        <a target="_blank" class="menu-link">
                             <i class='bx bx-category'></i>
-            <div style="margin-left:8px" data-i18n="Email">Kotegoriya İdarəetməsi</div>
+            <div style="margin-left:8px" data-i18n="Email">Room Categories</div>
         </a>
     </li>
 
     <li class="menu-item">
-        <a asp-area="Admin" asp-controller="SocialMedia" asp-action="Index" target="_blank" class="menu-link">
-          <i class='bx bx-cube-alt'></i>
-            <div style="margin-left:8px" data-i18n="Email">Media İdarəetməsi</div>
+        <a target="_blank" class="menu-link">
+          <i class="fa-solid fa-globe"></i>
+            <div style="margin-left:8px" data-i18n="Email">Countries</div>
         </a>
     </li>
 
+     <li class="menu-item">
+        <a target="_blank" class="menu-link">
+          <i class="fa-solid fa-handshake-angle"></i>
+            <div style="margin-left:8px" data-i18n="Email">Services</div>
+        </a>
+    </li>
+
+     <li class="menu-item">
+        <a target="_blank" class="menu-link">
+         <i class="fa-solid fa-backward-step"></i>
+            <div style="margin-left:8px" data-i18n="Email">About Us</div>
+        </a>
+    </li>
 
 
     <!-- Components -->
     <li class="menu-header small text-uppercase"><span class="menu-header-text">İSTİFADƏÇİLƏR</span></li>
     <!-- Cards -->
     <li class="menu-item">
-        <a asp-area="Admin" asp-controller="User" asp-action="Index" target="_blank" class="menu-link">
+        <a  target="_blank" class="menu-link">
         <i class='bx bx-user'></i>
         <div style="margin-left:8px" data-i18n="Basic">İstifadəçilər</div>
       </a>
@@ -215,7 +229,7 @@
 
 
      <li class="menu-item">
-         <a asp-area="Admin" asp-controller="Role" asp-action="Index" target="_blank" class="menu-link">
+         <a  target="_blank" class="menu-link">
            <i  class='bx bx-lock-alt'></i>
            <div style="margin-left:8px" data-i18n="Basic">Role</div>
          </a>
@@ -228,7 +242,7 @@
 
     <!-- Form Validation -->
     <li class="menu-item">
-       <a asp-area="Admin" asp-controller="Smtp" asp-action="Index" target="_blank" class="menu-link">
+       <a  target="_blank" class="menu-link">
        <i class='bx bx-cog'></i>
        <div style="margin-left:8px" data-i18n="Form Validation">Smtp ayarları</div>
       </a>
@@ -247,19 +261,19 @@
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
-                <a asp-area="Admin" asp-controller="Article" asp-action="DeletedArticle" target="_blank" class="menu-link">
+                <a target="_blank" class="menu-link">
                     <div class="text-truncate" data-i18n="List">Məqalə</div>
                 </a>
    
 
             <li class="menu-item">
-                <a asp-area="Admin" asp-controller="Category" asp-action="DeletedCategory" target="_blank" class="menu-link">
+                <a  target="_blank" class="menu-link">
                     <div class="text-truncate" data-i18n="List">Kategoriya</div>
                 </a>
    
 
                             <li class="menu-item">
-                <a asp-area="Admin" asp-controller="SocialMedia" asp-action="DeletedMedia" target="_blank" class="menu-link">
+                <a  target="_blank" class="menu-link">
                     <div class="text-truncate" data-i18n="List">Mediya</div>
                 </a>
    
@@ -267,8 +281,6 @@
            
                 </ul>
           </li>
-
-
 
 
 
