@@ -11,4 +11,9 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelProject.Data\HotelProject.Data.csproj" />
+    <ProjectReference Include="..\HotelProject.Entity\HotelProject.Entity.csproj" />
+  </ItemGroup>
+
 </Project>
