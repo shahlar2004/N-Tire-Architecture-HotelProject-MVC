@@ -1,8 +1,11 @@
-﻿using HotelProject.Service.Services.Abstraction;
+﻿using FluentValidation.AspNetCore;
+using HotelProject.Service.Services.Abstraction;
 using HotelProject.Service.Services.Concrete;
+using HotelProject.Service.Validation;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -17,6 +20,12 @@ namespace HotelProject.Service.Extensions
             var assembly = Assembly.GetExecutingAssembly();
             services.AddScoped<ICountryService,CountryService>();   
             services.AddAutoMapper(assembly);
+            services.AddControllersWithViews().AddFluentValidation(opt =>
+            {
+                opt.RegisterValidatorsFromAssemblyContaining<CountryValidation>();
+                opt.DisableDataAnnotationsValidation = true;
+                opt.ValidatorOptions.LanguageManager.Culture = new CultureInfo("az");
+            });
             return services;
             
         }

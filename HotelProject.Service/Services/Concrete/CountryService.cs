@@ -27,8 +27,19 @@ namespace HotelProject.Service.Services.Concrete
         {
             var countries = await unitOfWork.GetRepository<Country>().GetAllAsync(x=>!x.isDeleted);
             var map= mapper.Map<List<CountryDTO>>(countries);
-            int a = 5;
             return map;
         }
+
+
+  
+
+        public async Task CountryAddAsync(CountryAddDTO countryAddDTO)
+        {
+            var map = mapper.Map<Country>(countryAddDTO);
+            await unitOfWork.GetRepository<Country>().AddAsync(map);
+            await unitOfWork.SaveAsync();
+        }
+
+
     }
 }

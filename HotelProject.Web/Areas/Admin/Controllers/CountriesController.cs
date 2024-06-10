@@ -1,4 +1,5 @@
-﻿using HotelProject.Service.Services.Abstraction;
+﻿using HotelProject.Entity.DTOs.Country;
+using HotelProject.Service.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HotelProject.Web.Areas.Admin.Controllers
@@ -16,6 +17,12 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         {
             var countries= await countryService.GetAllCountriesIsNonDeleted();
             return View(countries);
+        }
+
+        public async Task<IActionResult> AddAsync(CountryAddDTO countryAddDTO)
+        {
+            var b= await countryService.get
+            return View();
         }
     }
 }
