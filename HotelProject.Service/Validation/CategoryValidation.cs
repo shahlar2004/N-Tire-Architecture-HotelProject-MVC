@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using HotelProject.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -8,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Service.Validation
 {
-    public class CountryValidation:AbstractValidator<Country>
+    public class CategoryValidation:AbstractValidator<RoomCategory>
     {
-        public CountryValidation()
+        public CategoryValidation()
         {
-            RuleFor(x=>x.Name).
+            RuleFor(x => x.Name).
                 NotEmpty().
                 MinimumLength(3)
                 .MaximumLength(50);

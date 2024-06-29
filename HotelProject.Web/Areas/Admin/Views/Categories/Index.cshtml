@@ -1,10 +1,10 @@
 ﻿
-@model List<CountryDTO>
+@model List<CategoryDTO>
 
 
 <div class="p-5 m-5">
 
-    <a asp-controller="Countries" asp-action="Add" asp-area="Admin" class="btn btn-primary mb-3 text-white" >Add</a>
+    <a class="btn btn-primary mb-3 text-white" asp-area="Admin" asp-controller="Categories" asp-action="Add">Add</a>
 
     <table id="example" class="table table-striped" style="width:100%">
 
@@ -18,26 +18,25 @@
             </tr>
         </thead>
         <tbody>
-           @foreach (var item in Model)
+            @foreach (var item in Model)
             {
 
                 <tr name="@item.Id">
                     <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.Name</th>
                     <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.CreatedBy</th>
                     <th style="text-transform:initial !important  letter-spacing:0 !important">@item.CreatedDate</th>
-                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(!item.isDeteled? "Aktiv" :"Deleted" )</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(!item.isDeteled ? "Aktiv" : "Deleted")</th>
                     <th style="text-transform:initial !important; letter-spacing:0 !important;" style="display:flex; justify-content:space-between">
-                        <a asp-area="Admin" asp-controller="Countries" asp-action="Update" asp-route-countryId="@item.Id" class="btn btn-primary btn-sm">
+                        <a asp-area="Admin" asp-controller="Categories" asp-action="Update" asp-route-categoryId="@item.Id" class="btn btn-primary btn-sm">
                             <i class="bx bx-edit text-white"></i>
                         </a>
-                        <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Countries" asp-action="Delete" asp-route-countryId="@item.Id"><i class='bx bxs-message-alt-x'></i></a>
+                        <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Categories" asp-action="Delete" asp-route-categoryId="@item.Id"><i class='bx bxs-message-alt-x'></i></a>
                     </th>
 
                 </tr>
 
-               
-            } 
 
+            }
         </tbody>
         <tfoot>
             <tr>
@@ -46,7 +45,7 @@
                 <th>CreatedDate</th>
                 <th>isDeteled</th>
                 <th>Proccess</th>
-        
+
             </tr>
         </tfoot>
 

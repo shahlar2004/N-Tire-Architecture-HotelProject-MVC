@@ -4,6 +4,7 @@ using HotelProject.Service.Extensions;
 using HotelProject.Entity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 
 
 
@@ -17,17 +18,16 @@ namespace HotelProject.Web
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new ToastrOptions()
+            {
+                PositionClass = ToastPositions.TopRight,
+                TimeOut = 3000
+            })
+               .AddRazorRuntimeCompilation(); 
+
 
             builder.Services.LoadDataLayerExtension(builder.Configuration);
             builder.Services.LoadServiceLayerExtension();
-
-            //builder.Services.AddDbContext<AppDbContext>(opt =>
-            //{
-            //    opt.UseSqlServer(builder.Configuration.GetConnectionString("Key"));
-            //});
-            //builder.Services.AddIdentity<AppUser, IdentityRole>().
-            //    AddEntityFrameworkStores<AppDbContext>();
 
 
 

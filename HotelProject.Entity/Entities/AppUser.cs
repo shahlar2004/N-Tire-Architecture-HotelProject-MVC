@@ -12,7 +12,6 @@ namespace HotelProject.Entity.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public DateTime BirthDate { get; set; }
         public string InstaLink { get; set; } = "#";
         public string FaceBookLink { get; set; } = "#";

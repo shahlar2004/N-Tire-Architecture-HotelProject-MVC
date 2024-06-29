@@ -93,6 +93,9 @@
                 text-decoration: none !important;
             }
         </style>
+        
+         @await Component.InvokeAsync("NToastNotify");
+
 
 </head>
 
@@ -182,14 +185,14 @@
     </li>
     <!-- Apps -->
     <li class="menu-item">
-          <a target="_blank" class="menu-link">
+          <a  asp-area="Admin" asp-controller="Rooms" asp-action="Index" target="_blank" class="menu-link">
          <i class="fa-sharp fa-solid fa-people-roof"></i>
          <div style="margin-left:8px" data-i18n="Email">Rooms</div>
       </a>
     </li>
 
     <li class="menu-item">
-        <a target="_blank" class="menu-link">
+        <a target="_blank" class="menu-link"  asp-controller="Categories" asp-action="Index" asp-area="Admin">
                             <i class='bx bx-category'></i>
             <div style="margin-left:8px" data-i18n="Email">Room Categories</div>
         </a>
@@ -261,20 +264,20 @@
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
-                <a target="_blank" class="menu-link">
-                    <div class="text-truncate" data-i18n="List">Məqalə</div>
+                <a asp-area="Admin" asp-controller="Countries" asp-action="UndoDelete" target="_blank" class="menu-link">
+                    <div class="text-truncate" data-i18n="List">Countries</div>
                 </a>
    
 
             <li class="menu-item">
-                <a  target="_blank" class="menu-link">
-                    <div class="text-truncate" data-i18n="List">Kategoriya</div>
+                <a asp-area="Admin" asp-controller="Categories" asp-action="UndoDelete"  target="_blank" class="menu-link" >
+                    <div class="text-truncate" data-i18n="List">Room Category</div>
                 </a>
    
 
                             <li class="menu-item">
                 <a  target="_blank" class="menu-link">
-                    <div class="text-truncate" data-i18n="List">Mediya</div>
+                    <div class="text-truncate" data-i18n="List">Rooms</div>
                 </a>
    
 

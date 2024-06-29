@@ -11,5 +11,11 @@ namespace HotelProject.Service.Services.Abstraction
     public interface ICountryService
     {
         Task<List<CountryDTO>> GetAllCountriesIsNonDeleted();
+        Task<List<CountryDTO>> GetAllCountriesIsDeleted();
+
+        Task CountryAddAsync(CountryAddDTO country);
+        Task SoftDelete(Guid Id);
+        Task CountryUpdateAsync(CountryUpdateDTO countryUpdateDTO);
+        Task CountryUndoDelete(Guid Id);
     }
 }

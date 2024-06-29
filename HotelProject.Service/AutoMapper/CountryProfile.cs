@@ -15,6 +15,7 @@ namespace HotelProject.Service.AutoMapper
         {
             CreateMap<CountryDTO,Country>().ReverseMap();    
             CreateMap<Country,CountryAddDTO>().ReverseMap();
+            CreateMap<CountryUpdateDTO, Country>().ReverseMap();
         }
     }
 }
