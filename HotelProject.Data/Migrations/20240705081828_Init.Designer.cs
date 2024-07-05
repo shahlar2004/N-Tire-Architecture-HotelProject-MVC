@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240607071102_Init")]
+    [Migration("20240705081828_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -174,7 +174,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "1c0dd479-a780-4cf9-841c-e3643625a406",
+                            ConcurrencyStamp = "5a1441a0-90f1-4704-92b4-ddb680cf5d3c",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -185,10 +185,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHsSumBWN1N+MF3fU/qQhM+TsmJ0VTYBWxPHbWO+uVLvHf1YW4kHWrOgZqCEOKdMOg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFKpBkZy8lU8GoZ8it1YY2DipBFujAD4/rHL6cSMVIK/PVLDa9Okw1Zq4H48vCpWhw==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "e96ebed1-59c4-48b4-8ede-4dd89a2bdb47",
+                            SecurityStamp = "f624d0eb-ac9c-4ee9-bd83-dbbc7c189556",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com",
@@ -199,7 +199,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "79083a5d-6f72-446e-a650-d3de48ef1549",
+                            ConcurrencyStamp = "8cc72b32-579e-4a57-a9fb-a86044ffbde5",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -210,10 +210,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBzLkAVJ41qBDvRrCBXmjr2VGRqeNqKdIIU68taH2pHbkkZB0W9KhizG21dPP3sA0A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFqIJ7L9jQofkRCALSY29+K1MeWC4IAJFPORBwayDJ8xzJK8pSEdDvn5jRTQ6eEH/Q==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d57a86b6-5e8d-436e-8d86-1d14426c90f8",
+                            SecurityStamp = "f59ec458-e018-4936-9723-b9cdab556a5f",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com",
@@ -260,14 +260,8 @@ namespace HotelProject.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("RoomCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("RoomCount")
                         .HasColumnType("int");
-
-                    b.Property<Guid>("RoomCountryId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
@@ -280,8 +274,6 @@ namespace HotelProject.Data.Migrations
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomCountryId", "RoomCategoryId");
 
                     b.ToTable("Bookings");
                 });
@@ -321,12 +313,41 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Countries");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(480),
+                            Name = "Azərbaycan",
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("640d6fbf-72af-4eb1-a276-fcaf7bedf870"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(509),
+                            Name = "Rusiya",
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("faa451a4-2ca8-4553-ad86-82607a771eb6"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(511),
+                            Name = "Türkiyə",
+                            isDeleted = false
+                        });
                 });
 
-            modelBuilder.Entity("HotelProject.Entity.Entities.HotelContact", b =>
+            modelBuilder.Entity("HotelProject.Entity.Entities.Hotel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedBy")
@@ -347,6 +368,10 @@ namespace HotelProject.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FaceBookLink")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HotelName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -381,7 +406,9 @@ namespace HotelProject.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("HotelContacts");
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Hotel");
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Image", b =>
@@ -417,10 +444,15 @@ namespace HotelProject.Data.Migrations
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("RoomPropertiesId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("RoomPropertiesId");
 
                     b.ToTable("Images");
 
@@ -429,7 +461,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
                             CreatedBy = "Shahlar Ismayilov",
-                            CreatedDate = new DateTime(2024, 6, 7, 11, 11, 1, 841, DateTimeKind.Local).AddTicks(2321),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(2024),
                             FileName = "Images/BlogPhoto",
                             FileType = "Jpg",
                             isDeleted = false
@@ -516,21 +548,21 @@ namespace HotelProject.Data.Migrations
                         new
                         {
                             Id = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"),
-                            ConcurrencyStamp = "da207bc8-833e-441f-9ef9-75ad0c5534a6",
+                            ConcurrencyStamp = "71ec411c-b177-4f7e-bc6e-efeffddfc3bc",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("4380fcf7-df75-485f-888a-d7715be71026"),
-                            ConcurrencyStamp = "d8c515ee-de98-4b30-9f1b-6f6d410c7507",
+                            ConcurrencyStamp = "2af95436-c195-4034-8dfa-68e9c0901dd6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"),
-                            ConcurrencyStamp = "dd0ee23c-6bf6-4355-ba92-8472599d6bc9",
+                            ConcurrencyStamp = "d04fd421-3ca1-4e29-ac2b-3bd522ce8cab",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -538,17 +570,9 @@ namespace HotelProject.Data.Migrations
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Room", b =>
                 {
-                    b.Property<Guid>("CountryId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoomCategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("AdultCount")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ChildCount")
-                        .HasColumnType("int");
 
                     b.Property<string>("CreatedBy")
                         .IsRequired()
@@ -563,43 +587,25 @@ namespace HotelProject.Data.Migrations
                     b.Property<DateTime?>("DeletedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("LuxuryLivingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("ModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PricePerNight")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomCount")
-                        .HasColumnType("int");
-
                     b.Property<string>("RoomNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid>("RoomPropertiesId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("isInternet")
-                        .HasColumnType("bit");
+                    b.HasKey("Id");
 
-                    b.HasKey("CountryId", "RoomCategoryId");
-
-                    b.HasIndex("LuxuryLivingId");
-
-                    b.HasIndex("RoomCategoryId");
+                    b.HasIndex("RoomPropertiesId");
 
                     b.ToTable("Rooms");
                 });
@@ -639,6 +645,98 @@ namespace HotelProject.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("RoomsCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4446),
+                            Name = "Junior Suite",
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("5024e694-bf92-4659-b456-cf664623efe4"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4453),
+                            Name = "Executive Suite",
+                            isDeleted = false
+                        },
+                        new
+                        {
+                            Id = new Guid("d529881b-6d1c-40fc-9ea3-0c29e4ef0691"),
+                            CreatedBy = "Undefined",
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4454),
+                            Name = "Super Deluxe",
+                            isDeleted = false
+                        });
+                });
+
+            modelBuilder.Entity("HotelProject.Entity.Entities.RoomProperties", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("AdultCount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ChildCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("DeletedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("ModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PricePerNight")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RoomCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("RoomCommanName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("RoomCount")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("isInternet")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.HasIndex("RoomCategoryId");
+
+                    b.ToTable("RoomProperties");
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Services", b =>
@@ -880,18 +978,6 @@ namespace HotelProject.Data.Migrations
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>");
 
                     b.HasDiscriminator().HasValue("UserRole");
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
-                            RoleId = new Guid("4380fcf7-df75-485f-888a-d7715be71026")
-                        },
-                        new
-                        {
-                            UserId = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
-                            RoleId = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4")
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.AppUser", b =>
@@ -909,15 +995,24 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("HotelProject.Entity.Entities.Booking", b =>
+            modelBuilder.Entity("HotelProject.Entity.Entities.Hotel", b =>
                 {
-                    b.HasOne("HotelProject.Entity.Entities.Room", "Room")
-                        .WithMany("Rooms")
-                        .HasForeignKey("RoomCountryId", "RoomCategoryId")
+                    b.HasOne("HotelProject.Entity.Entities.Country", "Country")
+                        .WithMany("Hotels")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Room");
+                    b.Navigation("Country");
+                });
+
+            modelBuilder.Entity("HotelProject.Entity.Entities.Image", b =>
+                {
+                    b.HasOne("HotelProject.Entity.Entities.RoomProperties", "RoomProperties")
+                        .WithMany("Images")
+                        .HasForeignKey("RoomPropertiesId");
+
+                    b.Navigation("RoomProperties");
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.LuxuryLiving", b =>
@@ -931,23 +1026,30 @@ namespace HotelProject.Data.Migrations
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Room", b =>
                 {
-                    b.HasOne("HotelProject.Entity.Entities.Country", "Country")
+                    b.HasOne("HotelProject.Entity.Entities.RoomProperties", "RoomProperties")
                         .WithMany("Rooms")
-                        .HasForeignKey("CountryId")
+                        .HasForeignKey("RoomPropertiesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("HotelProject.Entity.Entities.LuxuryLiving", null)
-                        .WithMany("Rooms")
-                        .HasForeignKey("LuxuryLivingId");
+                    b.Navigation("RoomProperties");
+                });
+
+            modelBuilder.Entity("HotelProject.Entity.Entities.RoomProperties", b =>
+                {
+                    b.HasOne("HotelProject.Entity.Entities.Hotel", "Hotel")
+                        .WithMany()
+                        .HasForeignKey("HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HotelProject.Entity.Entities.RoomCategory", "RoomCategory")
-                        .WithMany("Rooms")
+                        .WithMany()
                         .HasForeignKey("RoomCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Country");
+                    b.Navigation("Hotel");
 
                     b.Navigation("RoomCategory");
                 });
@@ -1005,7 +1107,7 @@ namespace HotelProject.Data.Migrations
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Country", b =>
                 {
-                    b.Navigation("Rooms");
+                    b.Navigation("Hotels");
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Image", b =>
@@ -1013,18 +1115,10 @@ namespace HotelProject.Data.Migrations
                     b.Navigation("Images");
                 });
 
-            modelBuilder.Entity("HotelProject.Entity.Entities.LuxuryLiving", b =>
+            modelBuilder.Entity("HotelProject.Entity.Entities.RoomProperties", b =>
                 {
-                    b.Navigation("Rooms");
-                });
+                    b.Navigation("Images");
 
-            modelBuilder.Entity("HotelProject.Entity.Entities.Room", b =>
-                {
-                    b.Navigation("Rooms");
-                });
-
-            modelBuilder.Entity("HotelProject.Entity.Entities.RoomCategory", b =>
-                {
                     b.Navigation("Rooms");
                 });
 

@@ -10,6 +10,7 @@ namespace HotelProject.Entity.Entities
     public class RoomCategory:EntityBase
     {
         public string Name { get; set; }
-        public ICollection<Room> Rooms { get; set; }
+
+        ICollection<RoomProperties> RoomProperties { get; set; }
     }
 }

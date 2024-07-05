@@ -16,7 +16,6 @@ namespace HotelProject.Entity.Entities
         public int AdultCount { get; set; }
         public int RoomCount { get; set; }
         public Guid RoomId { get; set; }
-        public Room Room { get; set; }
         public string Sms { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         private readonly IToastNotification toastNotification;
         private readonly IUnitOfWork unitOfWork;
 
-        public CategoriesController(ICategoriesService categoriesService,IMapper mapper,IValidator<RoomCategory> validator, IToastNotification toastNotification,IUnitOfWork unitOfWork)
+        public CategoriesController(ICategoriesService categoriesService, IMapper mapper, IValidator<RoomCategory> validator, IToastNotification toastNotification, IUnitOfWork unitOfWork)
         {
             this.categoriesService = categoriesService;
             this.mapper = mapper;
@@ -35,7 +35,7 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var items=await categoriesService.GetAllCategoriesIsNonDeleted();
+            var items = await categoriesService.GetAllCategoriesIsNonDeleted();
             return View(items);
         }
 

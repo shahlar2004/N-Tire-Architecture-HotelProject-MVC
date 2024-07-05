@@ -32,7 +32,7 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var countries= await countryService.GetAllCountriesIsNonDeleted();
+            var countries = await countryService.GetAllCountriesIsNonDeleted();
             return View(countries);
         }
 
@@ -46,12 +46,12 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         {
             var map = mapper.Map<Country>(countryAddDTO);
             var validationResult = await validator.ValidateAsync(map);
-             if (validationResult.IsValid)
+            if (validationResult.IsValid)
             {
                 await countryService.CountryAddAsync(countryAddDTO);
                 toastNotification.AddSuccessToastMessage(Messages.Country.Add(countryAddDTO.Name), new ToastrOptions() { Title = "Uğurlu!" });
 
-                return RedirectToAction("Index","Countries", new {Area="Admin"});
+                return RedirectToAction("Index", "Countries", new { Area = "Admin" });
             }
 
             else
@@ -60,7 +60,7 @@ namespace HotelProject.Web.Areas.Admin.Controllers
             }
 
             return View();
-           
+
         }
 
         [HttpGet]
@@ -73,8 +73,8 @@ namespace HotelProject.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Update(Guid countryId)
         {
-            var item=  await unitOfWork.GetRepository<Country>().GetByGuidAsync(countryId);
-            var map= mapper.Map<CountryUpdateDTO>(item);
+            var item = await unitOfWork.GetRepository<Country>().GetByGuidAsync(countryId);
+            var map = mapper.Map<CountryUpdateDTO>(item);
             return View(map);
         }
 

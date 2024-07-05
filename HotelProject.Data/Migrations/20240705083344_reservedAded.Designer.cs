@@ -4,6 +4,7 @@ using HotelProject.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240705083344_reservedAded")]
+    partial class reservedAded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,7 +174,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "2e703f96-6abd-4a46-9252-8f1b60e7ef83",
+                            ConcurrencyStamp = "97707e94-1930-414e-8631-65af9453be82",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -182,10 +185,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENhySK0wdjoI5USL23jmUuCFtS/0XNQQETjod34nzQVSdL74EowFDceWZcn0DgPlWg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEE+wFhOPtggrcwqPbW97YRkL0gtfVX1KU4MTQSBDWhDMyuMUzKx+YSNetCXyrZX9Rw==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cf865db0-d264-4a36-b9c5-3d254eabf702",
+                            SecurityStamp = "f8b81f39-977c-410b-996a-84991eb2c29f",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com",
@@ -196,7 +199,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "1a4bc066-77bd-43ed-b47c-2d59d1c24252",
+                            ConcurrencyStamp = "50e9812f-90d7-4f7b-ad9f-93b3c946c78f",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -207,10 +210,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJLgM/moNB36wZkga1zLeIMWedP8Fo9GK++Rlvughuvldn/oZY9eyEhTR1Nj6Hyi2A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIXNnTQpjqzaj//WUU3zPdjoCxTcMKz6Er/KIMiORQvzvzKaIZ/dBBdTVEdEhi5ZcQ==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "563a87b6-19e2-4851-a89d-a69d7a0db323",
+                            SecurityStamp = "ae657858-2971-4dec-a70b-41fdabb7fcb8",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com",
@@ -316,7 +319,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 304, DateTimeKind.Local).AddTicks(8314),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(396),
                             Name = "Azərbaycan",
                             isDeleted = false
                         },
@@ -324,7 +327,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("640d6fbf-72af-4eb1-a276-fcaf7bedf870"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 304, DateTimeKind.Local).AddTicks(8348),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(428),
                             Name = "Rusiya",
                             isDeleted = false
                         },
@@ -332,7 +335,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("faa451a4-2ca8-4553-ad86-82607a771eb6"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 304, DateTimeKind.Local).AddTicks(8349),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(429),
                             Name = "Türkiyə",
                             isDeleted = false
                         });
@@ -406,40 +409,6 @@ namespace HotelProject.Data.Migrations
                     b.HasIndex("CountryId");
 
                     b.ToTable("Hotel");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("28abfeea-3e87-4cbe-8809-4dcb111ea3fd"),
-                            CountryId = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
-                            CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(269),
-                            Email = "test@gmail.com",
-                            FaceBookLink = "#",
-                            HotelName = "Hotel1",
-                            InstaLink = "#",
-                            Location = "#",
-                            Number = "+994509755489",
-                            TwitterLink = "#",
-                            YoutubeLink = "#",
-                            isDeleted = false
-                        },
-                        new
-                        {
-                            Id = new Guid("7612944d-845b-4ab3-9442-09805c12321f"),
-                            CountryId = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
-                            CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(280),
-                            Email = "test2@gmail.com",
-                            FaceBookLink = "#",
-                            HotelName = "Hotel2",
-                            InstaLink = "#",
-                            Location = "#",
-                            Number = "+994519755489",
-                            TwitterLink = "#",
-                            YoutubeLink = "#",
-                            isDeleted = false
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Image", b =>
@@ -492,7 +461,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
                             CreatedBy = "Shahlar Ismayilov",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(1506),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(1817),
                             FileName = "Images/BlogPhoto",
                             FileType = "Jpg",
                             isDeleted = false
@@ -579,21 +548,21 @@ namespace HotelProject.Data.Migrations
                         new
                         {
                             Id = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"),
-                            ConcurrencyStamp = "0942942a-87db-4ca9-a08a-82670da78d28",
+                            ConcurrencyStamp = "3e1612bd-c53e-42aa-932e-c834730427c8",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("4380fcf7-df75-485f-888a-d7715be71026"),
-                            ConcurrencyStamp = "b895c89f-7c94-40bd-9b17-cf6c2f210510",
+                            ConcurrencyStamp = "8866c338-778b-4605-9ec0-349cb7b60774",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"),
-                            ConcurrencyStamp = "ca3d9b5d-856b-4b90-856d-2cbf8d8c6780",
+                            ConcurrencyStamp = "a05c43df-6f1e-427e-934a-b1d50a966c71",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -685,7 +654,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(4084),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(4127),
                             Name = "Junior Suite",
                             isDeleted = false
                         },
@@ -693,7 +662,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("5024e694-bf92-4659-b456-cf664623efe4"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(4092),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(4134),
                             Name = "Executive Suite",
                             isDeleted = false
                         },
@@ -701,7 +670,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("d529881b-6d1c-40fc-9ea3-0c29e4ef0691"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(4093),
+                            CreatedDate = new DateTime(2024, 7, 5, 12, 33, 43, 902, DateTimeKind.Local).AddTicks(4136),
                             Name = "Super Deluxe",
                             isDeleted = false
                         });
@@ -771,24 +740,6 @@ namespace HotelProject.Data.Migrations
                     b.HasIndex("RoomCategoryId");
 
                     b.ToTable("RoomProperties");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("069ff25a-4962-42cf-b099-2635b6b172ff"),
-                            AdultCount = 2,
-                            ChildCount = 2,
-                            CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 5, 13, 43, 29, 305, DateTimeKind.Local).AddTicks(7502),
-                            Description = "Good Luck!",
-                            HotelId = new Guid("28abfeea-3e87-4cbe-8809-4dcb111ea3fd"),
-                            PricePerNight = 100,
-                            RoomCategoryId = new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"),
-                            RoomCommanName = "1A",
-                            RoomCount = 4,
-                            isDeleted = false,
-                            isInternet = true
-                        });
                 });
 
             modelBuilder.Entity("HotelProject.Entity.Entities.Services", b =>

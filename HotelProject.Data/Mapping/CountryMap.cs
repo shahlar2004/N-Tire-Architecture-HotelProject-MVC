@@ -15,8 +15,8 @@ namespace HotelProject.Data.Mapping
         {
             builder.HasData(new Country
             {
-                Id= Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}"),
-                Name="Azərbaycan"
+                Id = Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}"),
+                Name = "Azərbaycan"
             },
             new Country
             {

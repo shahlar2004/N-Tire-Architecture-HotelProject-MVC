@@ -1,5 +1,69 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model List<RoomDTO>
+
+
+<div class="p-5 m-5">
+
+    <a asp-controller="Rooms" asp-action="Add" asp-area="Admin" class="btn btn-primary mb-3 text-white">Add</a>
+
+    <table id="example" class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>RoomNumber</th>
+                <th>PricePerNight</th>
+                <th>RoomCount</th>
+                <th>Country</th>
+                <th>Category</th>
+                <th>AdultCount</th>
+                <th>ChildCount</th>
+                <th>Internet</th>
+                <th>CreatedDate</th>
+                <th>Proccess</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr name="@item.Id" >
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.RoomNumber</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(item.PricePerNight+"$")</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.RoomCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.Country.Name</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.RoomCategory.Name</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.AdultCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.ChildCount</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(item.isInternet ? "Yes" : "No")</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.CreatedDate</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;" style="display:flex; justify-content:space-between">
+                        <a asp-area="Admin" asp-controller="Rooms" asp-action="Update" asp-route-roomId="@item.Id" class="btn btn-primary btn-sm">
+                            <i class="bx bx-edit text-white"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Rooms" asp-action="Delete" asp-route-roomId="@item.Id"><i class='bx bxs-message-alt-x'></i></a>
+                    </th>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>RoomNumber</th>
+                <th>PricePerNight</th>
+                <th>RoomCount</th>
+                <th>Country</th>
+                <th>Category</th>
+                <th>AdultCount</th>
+                <th>ChildCount</th>
+                <th>Internet</th>
+                <th>CreatedDate</th>
+                <th>Proccess</th>
+
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div> 

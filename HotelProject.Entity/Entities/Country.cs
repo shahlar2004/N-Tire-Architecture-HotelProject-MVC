@@ -11,6 +11,6 @@ namespace HotelProject.Entity.Entities
     public class Country:EntityBase
     {
         public string Name {  get; set; }   
-        public ICollection<Room> Rooms { get; set; }
+        public ICollection<Hotel> Hotels { get; set; }
     }
 }

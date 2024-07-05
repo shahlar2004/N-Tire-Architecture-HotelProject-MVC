@@ -86,7 +86,7 @@ namespace HotelProject.Web
                 (
                     name: "Admin",
                     areaName: "Admin",
-                    pattern: "Admin/{controller=Auth}/{action=Login}/{id?}"
+                    pattern: "Admin/{controller=Home}/{action=Index}/{id?}"
                 );
 
                 endpoints.MapDefaultControllerRoute();

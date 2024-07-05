@@ -48,6 +48,31 @@ namespace HotelProject.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Bookings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ChildCount = table.Column<int>(type: "int", nullable: false),
+                    AdultCount = table.Column<int>(type: "int", nullable: false),
+                    RoomCount = table.Column<int>(type: "int", nullable: false),
+                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Sms = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Bookings", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Countries",
                 columns: table => new
                 {
@@ -64,51 +89,6 @@ namespace HotelProject.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Countries", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HotelContacts",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    InstaLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FaceBookLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TwitterLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YoutubeLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HotelContacts", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Images",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Images", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -212,6 +192,157 @@ namespace HotelProject.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Hotel",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HotelName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    InstaLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FaceBookLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TwitterLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    YoutubeLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Hotel", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Hotel_Countries_CountryId",
+                        column: x => x.CountryId,
+                        principalTable: "Countries",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "LuxuryLivings",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VideoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LuxuryLivings", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_LuxuryLivings_Videos_VideoId",
+                        column: x => x.VideoId,
+                        principalTable: "Videos",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "RoomProperties",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoomCommanName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PricePerNight = table.Column<int>(type: "int", nullable: false),
+                    AdultCount = table.Column<int>(type: "int", nullable: false),
+                    ChildCount = table.Column<int>(type: "int", nullable: false),
+                    RoomCount = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    isInternet = table.Column<bool>(type: "bit", nullable: false),
+                    RoomCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HotelId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_RoomProperties", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_RoomProperties_Hotel_HotelId",
+                        column: x => x.HotelId,
+                        principalTable: "Hotel",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_RoomProperties_RoomsCategory_RoomCategoryId",
+                        column: x => x.RoomCategoryId,
+                        principalTable: "RoomsCategory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Images",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomPropertiesId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Images", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Images_RoomProperties_RoomPropertiesId",
+                        column: x => x.RoomPropertiesId,
+                        principalTable: "RoomProperties",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Rooms",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RoomNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoomPropertiesId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Rooms", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Rooms_RoomProperties_RoomPropertiesId",
+                        column: x => x.RoomPropertiesId,
+                        principalTable: "RoomProperties",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -252,33 +383,6 @@ namespace HotelProject.Data.Migrations
                         name: "FK_AspNetUsers_Statuses_StatusId",
                         column: x => x.StatusId,
                         principalTable: "Statuses",
-                        principalColumn: "Id");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "LuxuryLivings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VideoId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    isDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_LuxuryLivings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_LuxuryLivings_Videos_VideoId",
-                        column: x => x.VideoId,
-                        principalTable: "Videos",
                         principalColumn: "Id");
                 });
 
@@ -368,115 +472,48 @@ namespace HotelProject.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Rooms",
-                columns: table => new
-                {
-                    RoomCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoomNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PricePerNight = table.Column<int>(type: "int", nullable: false),
-                    AdultCount = table.Column<int>(type: "int", nullable: false),
-                    ChildCount = table.Column<int>(type: "int", nullable: false),
-                    RoomCount = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    isInternet = table.Column<bool>(type: "bit", nullable: false),
-                    LuxuryLivingId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Rooms", x => new { x.CountryId, x.RoomCategoryId });
-                    table.ForeignKey(
-                        name: "FK_Rooms_Countries_CountryId",
-                        column: x => x.CountryId,
-                        principalTable: "Countries",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Rooms_LuxuryLivings_LuxuryLivingId",
-                        column: x => x.LuxuryLivingId,
-                        principalTable: "LuxuryLivings",
-                        principalColumn: "Id");
-                    table.ForeignKey(
-                        name: "FK_Rooms_RoomsCategory_RoomCategoryId",
-                        column: x => x.RoomCategoryId,
-                        principalTable: "RoomsCategory",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Bookings",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ChildCount = table.Column<int>(type: "int", nullable: false),
-                    AdultCount = table.Column<int>(type: "int", nullable: false),
-                    RoomCount = table.Column<int>(type: "int", nullable: false),
-                    RoomId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoomCountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RoomCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Sms = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    DeletedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    DeletedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    isDeleted = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Bookings", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Bookings_Rooms_RoomCountryId_RoomCategoryId",
-                        columns: x => new { x.RoomCountryId, x.RoomCategoryId },
-                        principalTable: "Rooms",
-                        principalColumns: new[] { "CountryId", "RoomCategoryId" },
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"), "dd0ee23c-6bf6-4355-ba92-8472599d6bc9", "User", "USER" },
-                    { new Guid("4380fcf7-df75-485f-888a-d7715be71026"), "d8c515ee-de98-4b30-9f1b-6f6d410c7507", "Admin", "ADMIN" },
-                    { new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"), "da207bc8-833e-441f-9ef9-75ad0c5534a6", "Superadmin", "SUPERADMIN" }
+                    { new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"), "d04fd421-3ca1-4e29-ac2b-3bd522ce8cab", "User", "USER" },
+                    { new Guid("4380fcf7-df75-485f-888a-d7715be71026"), "2af95436-c195-4034-8dfa-68e9c0901dd6", "Admin", "ADMIN" },
+                    { new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"), "71ec411c-b177-4f7e-bc6e-efeffddfc3bc", "Superadmin", "SUPERADMIN" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Countries",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DeletedBy", "DeletedDate", "ModifiedBy", "ModifiedDate", "Name", "isDeleted" },
+                values: new object[,]
+                {
+                    { new Guid("640d6fbf-72af-4eb1-a276-fcaf7bedf870"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(509), null, null, null, null, "Rusiya", false },
+                    { new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(480), null, null, null, null, "Azərbaycan", false },
+                    { new Guid("faa451a4-2ca8-4553-ad86-82607a771eb6"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(511), null, null, null, null, "Türkiyə", false }
                 });
 
             migrationBuilder.InsertData(
                 table: "Images",
-                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DeletedBy", "DeletedDate", "FileName", "FileType", "ModifiedBy", "ModifiedDate", "isDeleted" },
-                values: new object[] { new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "Shahlar Ismayilov", new DateTime(2024, 6, 7, 11, 11, 1, 841, DateTimeKind.Local).AddTicks(2321), null, null, "Images/BlogPhoto", "Jpg", null, null, false });
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DeletedBy", "DeletedDate", "FileName", "FileType", "ModifiedBy", "ModifiedDate", "RoomPropertiesId", "isDeleted" },
+                values: new object[] { new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "Shahlar Ismayilov", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(2024), null, null, "Images/BlogPhoto", "Jpg", null, null, null, false });
+
+            migrationBuilder.InsertData(
+                table: "RoomsCategory",
+                columns: new[] { "Id", "CreatedBy", "CreatedDate", "DeletedBy", "DeletedDate", "ModifiedBy", "ModifiedDate", "Name", "isDeleted" },
+                values: new object[,]
+                {
+                    { new Guid("5024e694-bf92-4659-b456-cf664623efe4"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4453), null, null, null, null, "Executive Suite", false },
+                    { new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4446), null, null, null, null, "Junior Suite", false },
+                    { new Guid("d529881b-6d1c-40fc-9ea3-0c29e4ef0691"), "Undefined", new DateTime(2024, 7, 5, 12, 18, 27, 918, DateTimeKind.Local).AddTicks(4454), null, null, null, null, "Super Deluxe", false }
+                });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "BirthDate", "ConcurrencyStamp", "Email", "EmailConfirmed", "FaceBookLink", "FirstName", "ImageId", "InstaLink", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "StatusId", "TwitterLink", "TwoFactorEnabled", "UserName", "YoutubeLink" },
                 values: new object[,]
                 {
-                    { new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "79083a5d-6f72-446e-a650-d3de48ef1549", "superadmin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEBzLkAVJ41qBDvRrCBXmjr2VGRqeNqKdIIU68taH2pHbkkZB0W9KhizG21dPP3sA0A==", "+905439999988", false, "d57a86b6-5e8d-436e-8d86-1d14426c90f8", null, "#", false, "superadmin@gmail.com", "#" },
-                    { new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1c0dd479-a780-4cf9-841c-e3643625a406", "admin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEHsSumBWN1N+MF3fU/qQhM+TsmJ0VTYBWxPHbWO+uVLvHf1YW4kHWrOgZqCEOKdMOg==", "+905439999988", false, "e96ebed1-59c4-48b4-8ede-4dd89a2bdb47", null, "#", false, "admin@gmail.com", "#" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AspNetUserRoles",
-                columns: new[] { "RoleId", "UserId", "Discriminator" },
-                values: new object[,]
-                {
-                    { new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"), new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"), "UserRole" },
-                    { new Guid("4380fcf7-df75-485f-888a-d7715be71026"), new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"), "UserRole" }
+                    { new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "8cc72b32-579e-4a57-a9fb-a86044ffbde5", "superadmin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "SUPERADMIN@GMAIL.COM", "SUPERADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEFqIJ7L9jQofkRCALSY29+K1MeWC4IAJFPORBwayDJ8xzJK8pSEdDvn5jRTQ6eEH/Q==", "+905439999988", false, "f59ec458-e018-4936-9723-b9cdab556a5f", null, "#", false, "superadmin@gmail.com", "#" },
+                    { new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"), 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5a1441a0-90f1-4704-92b4-ddb680cf5d3c", "admin@gmail.com", false, "#", "Jako", new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"), "#", "Ismo", false, null, "ADMIN@GMAIL.COM", "ADMIN@GMAIL.COM", "AQAAAAIAAYagAAAAEFKpBkZy8lU8GoZ8it1YY2DipBFujAD4/rHL6cSMVIK/PVLDa9Okw1Zq4H48vCpWhw==", "+905439999988", false, "f624d0eb-ac9c-4ee9-bd83-dbbc7c189556", null, "#", false, "admin@gmail.com", "#" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -529,9 +566,14 @@ namespace HotelProject.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bookings_RoomCountryId_RoomCategoryId",
-                table: "Bookings",
-                columns: new[] { "RoomCountryId", "RoomCategoryId" });
+                name: "IX_Hotel_CountryId",
+                table: "Hotel",
+                column: "CountryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Images_RoomPropertiesId",
+                table: "Images",
+                column: "RoomPropertiesId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_LuxuryLivings_VideoId",
@@ -539,14 +581,19 @@ namespace HotelProject.Data.Migrations
                 column: "VideoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rooms_LuxuryLivingId",
-                table: "Rooms",
-                column: "LuxuryLivingId");
+                name: "IX_RoomProperties_HotelId",
+                table: "RoomProperties",
+                column: "HotelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Rooms_RoomCategoryId",
-                table: "Rooms",
+                name: "IX_RoomProperties_RoomCategoryId",
+                table: "RoomProperties",
                 column: "RoomCategoryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Rooms_RoomPropertiesId",
+                table: "Rooms",
+                column: "RoomPropertiesId");
         }
 
         /// <inheritdoc />
@@ -574,7 +621,10 @@ namespace HotelProject.Data.Migrations
                 name: "Bookings");
 
             migrationBuilder.DropTable(
-                name: "HotelContacts");
+                name: "LuxuryLivings");
+
+            migrationBuilder.DropTable(
+                name: "Rooms");
 
             migrationBuilder.DropTable(
                 name: "Services");
@@ -586,7 +636,7 @@ namespace HotelProject.Data.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Rooms");
+                name: "Videos");
 
             migrationBuilder.DropTable(
                 name: "Images");
@@ -595,16 +645,16 @@ namespace HotelProject.Data.Migrations
                 name: "Statuses");
 
             migrationBuilder.DropTable(
-                name: "Countries");
+                name: "RoomProperties");
 
             migrationBuilder.DropTable(
-                name: "LuxuryLivings");
+                name: "Hotel");
 
             migrationBuilder.DropTable(
                 name: "RoomsCategory");
 
             migrationBuilder.DropTable(
-                name: "Videos");
+                name: "Countries");
         }
     }
 }

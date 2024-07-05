@@ -67,8 +67,6 @@ namespace HotelProject.Web.Areas.Admin.Controllers
                 return View();
             }
 
-
-
         }
 
 

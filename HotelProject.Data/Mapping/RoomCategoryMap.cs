@@ -15,7 +15,7 @@ namespace HotelProject.Data.Mapping
         {
             builder.HasData(new RoomCategory
             {
-                Id=Guid.Parse("{C44363BE-74A2-43E8-B8BE-6A5A69F49A7F}"),
+                Id = Guid.Parse("{C44363BE-74A2-43E8-B8BE-6A5A69F49A7F}"),
                 Name = "Junior Suite"
             },
             new RoomCategory

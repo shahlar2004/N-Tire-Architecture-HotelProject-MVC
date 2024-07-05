@@ -17,6 +17,7 @@ namespace HotelProject.Service.Validation
                 NotEmpty().
                 MinimumLength(3)
                 .MaximumLength(50);
+
         }
     }
 }

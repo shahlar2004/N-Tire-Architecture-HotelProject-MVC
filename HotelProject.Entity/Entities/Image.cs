@@ -12,5 +12,7 @@ namespace HotelProject.Entity.Entities
         public string FileName { get; set; }
         public string FileType { get; set; }
         public ICollection<AppUser>? Images { get; set;}
+        public Guid? RoomPropertiesId { get; set; }
+        public RoomProperties? RoomProperties { get; set; }
     }
 }

@@ -55,7 +55,7 @@ namespace HotelProject.Data.Repostories.Concrets
             if(includeProperties.Any())
                 foreach (var item in includeProperties)
                 {
-                    query.Include(item);
+                   query= query.Include(item);
                 }
 
             return await query.ToListAsync();

@@ -27,9 +27,10 @@ namespace HotelProject.Data.Context
         DbSet<Status> Statuses { get; set; }
         DbSet<Room> Rooms { get; set; }
         DbSet<RoomCategory> RoomsCategory { get; set;}
+        DbSet<RoomProperties> RoomProperties { get; set; }
         DbSet<Country> Countries { get; set; }
         DbSet<Booking> Bookings { get; set; }   
-        DbSet<HotelContact> HotelContacts { get; set; }
+        DbSet<Hotel> Hotel { get; set; }
         DbSet<AboutUs> AboutUs { get; set; }    
         DbSet<LuxuryLiving> LuxuryLivings { get; set; }
         DbSet<Video> Videos { get; set; }

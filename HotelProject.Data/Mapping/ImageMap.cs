@@ -16,7 +16,6 @@ namespace HotelProject.Data.Mapping
             builder.HasData(new Image
             {
                 Id = Guid.Parse("{53C70E42-4494-47E0-8391-43AED02DADD3}"),
-
                 FileName = "Images/BlogPhoto",
                 FileType = "Jpg",
                 CreatedBy = "Shahlar Ismayilov",

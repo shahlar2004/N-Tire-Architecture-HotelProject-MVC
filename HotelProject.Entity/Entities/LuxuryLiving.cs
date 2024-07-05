@@ -12,7 +12,5 @@ namespace HotelProject.Entity.Entities
         public Guid? VideoId { get; set; }
         public Video Video { get; set; }
         public Guid RoomId { get; set; }
-        public ICollection<Room> Rooms { get; set; }
-
     }
 }

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HotelProject.Entity.DTOs.Room;
+using FluentValidation;
 using HotelProject.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HotelProject.Service.AutoMapper
+namespace HotelProject.Service.Validation
 {
-    public class RoomProfile:Profile
+    public class RoomValidation:AbstractValidator<Room>
     {
-        public RoomProfile()
+        public RoomValidation()
         {
+              
         }
     }
 }
