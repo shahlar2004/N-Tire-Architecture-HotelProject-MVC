@@ -4,6 +4,7 @@ using HotelProject.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelProject.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240709185108_RoomPropertiesDataSeed")]
+    partial class RoomPropertiesDataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,7 +174,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("e0c8114c-578e-4d0a-84d9-d936e0f34a7c"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "b426c158-3469-4c09-a2db-7cdc6c0470e6",
+                            ConcurrencyStamp = "802761ac-6514-4818-80a4-37e73a6492e7",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -182,10 +185,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMdr5e0h9oJCwk2nVvmV5he6jTeMMn4evGdJFIvzI3cjIrkaybfbdTJAW7J4dwR3Og==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPSOdiq3+D+XTg3iriDhqasNeomzJ4SziceZ6+cRKQCWhzTXGK8qG8SoiZYJOh4+Pw==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2a2c6641-f9c2-4228-a8d3-02f131615aa1",
+                            SecurityStamp = "588a0dfb-4300-4d0c-93a1-3c51779dc49a",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com",
@@ -196,7 +199,7 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("b5c0033f-e7f1-4610-a19c-fa970c039602"),
                             AccessFailedCount = 0,
                             BirthDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ConcurrencyStamp = "a525badf-2c87-495e-8adf-f5b744e41c3e",
+                            ConcurrencyStamp = "f8ba70cf-e911-44fe-bbde-502bc11155fb",
                             Email = "superadmin@gmail.com",
                             EmailConfirmed = false,
                             FaceBookLink = "#",
@@ -207,10 +210,10 @@ namespace HotelProject.Data.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDslTjooW22dZ8B9OAF57kehcvxaZufA8QwkRtFE/dFwttOmn4Us26h1uspniFxLGg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGVMvItaRvMmaEBntT7HstbjTAIcEk1vtbAoUue7s58tZziDnqaz/lKTys5gw7GHYg==",
                             PhoneNumber = "+905439999988",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "ec4261cd-b0a1-4c84-9c83-d92cff222640",
+                            SecurityStamp = "e489b897-1da4-42b1-8674-09826d0546ff",
                             TwitterLink = "#",
                             TwoFactorEnabled = false,
                             UserName = "superadmin@gmail.com",
@@ -316,7 +319,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(552),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 575, DateTimeKind.Local).AddTicks(6440),
                             Name = "Azərbaycan",
                             isDeleted = false
                         },
@@ -324,7 +327,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("640d6fbf-72af-4eb1-a276-fcaf7bedf870"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(575),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 575, DateTimeKind.Local).AddTicks(6477),
                             Name = "Rusiya",
                             isDeleted = false
                         },
@@ -332,7 +335,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("faa451a4-2ca8-4553-ad86-82607a771eb6"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(577),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 575, DateTimeKind.Local).AddTicks(6481),
                             Name = "Türkiyə",
                             isDeleted = false
                         });
@@ -390,9 +393,6 @@ namespace HotelProject.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<byte>("StarCount")
-                        .HasColumnType("tinyint");
-
                     b.Property<string>("TwitterLink")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -416,14 +416,13 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("28abfeea-3e87-4cbe-8809-4dcb111ea3fd"),
                             CountryId = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(2069),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 575, DateTimeKind.Local).AddTicks(9934),
                             Email = "hotel1@gmail.com",
                             FaceBookLink = "#",
                             HotelName = "Hotel1",
                             InstaLink = "#",
                             Location = "#",
                             Number = "+994509755489",
-                            StarCount = (byte)3,
                             TwitterLink = "#",
                             YoutubeLink = "#",
                             isDeleted = false
@@ -433,14 +432,13 @@ namespace HotelProject.Data.Migrations
                             Id = new Guid("7612944d-845b-4ab3-9442-09805c12321f"),
                             CountryId = new Guid("f2d337ca-74ff-41cd-aeae-8c152e818759"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(2078),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 575, DateTimeKind.Local).AddTicks(9957),
                             Email = "hotel2@gmail.com",
                             FaceBookLink = "#",
                             HotelName = "Hotel2",
                             InstaLink = "#",
                             Location = "#",
                             Number = "+994519755489",
-                            StarCount = (byte)5,
                             TwitterLink = "#",
                             YoutubeLink = "#",
                             isDeleted = false
@@ -497,7 +495,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("53c70e42-4494-47e0-8391-43aed02dadd3"),
                             CreatedBy = "Shahlar Ismayilov",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(3272),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 576, DateTimeKind.Local).AddTicks(3291),
                             FileName = "Images/BlogPhoto",
                             FileType = "Jpg",
                             isDeleted = false
@@ -584,21 +582,21 @@ namespace HotelProject.Data.Migrations
                         new
                         {
                             Id = new Guid("81d91823-eb61-4d17-a1fc-8a286f88f6d4"),
-                            ConcurrencyStamp = "8843b818-c4cf-488a-afd2-25e3691d2847",
+                            ConcurrencyStamp = "ab6270ef-b57d-43e3-a17a-89c913a74efc",
                             Name = "Superadmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = new Guid("4380fcf7-df75-485f-888a-d7715be71026"),
-                            ConcurrencyStamp = "78d8c65c-72ea-45d3-8087-6fc21f85ac56",
+                            ConcurrencyStamp = "b31b197b-747a-44a8-a3d1-987db52a4075",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = new Guid("26c34f97-7d52-452b-8e70-48135d3756cd"),
-                            ConcurrencyStamp = "86e5d134-2a0f-4f1b-96fa-c357a28f215c",
+                            ConcurrencyStamp = "7c6c7e09-11ef-4819-a1ed-5720b6352ba0",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -690,7 +688,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(5657),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 576, DateTimeKind.Local).AddTicks(9656),
                             Name = "Junior Suite",
                             isDeleted = false
                         },
@@ -698,7 +696,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("5024e694-bf92-4659-b456-cf664623efe4"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(5664),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 576, DateTimeKind.Local).AddTicks(9678),
                             Name = "Executive Suite",
                             isDeleted = false
                         },
@@ -706,7 +704,7 @@ namespace HotelProject.Data.Migrations
                         {
                             Id = new Guid("d529881b-6d1c-40fc-9ea3-0c29e4ef0691"),
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(5665),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 576, DateTimeKind.Local).AddTicks(9682),
                             Name = "Super Deluxe",
                             isDeleted = false
                         });
@@ -769,6 +767,9 @@ namespace HotelProject.Data.Migrations
                     b.Property<int>("RoomCount")
                         .HasColumnType("int");
 
+                    b.Property<byte>("StarCount")
+                        .HasColumnType("tinyint");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
@@ -792,13 +793,14 @@ namespace HotelProject.Data.Migrations
                             BedCount = (byte)3,
                             ChildCount = 2,
                             CreatedBy = "Undefined",
-                            CreatedDate = new DateTime(2024, 7, 9, 23, 11, 47, 884, DateTimeKind.Local).AddTicks(8631),
+                            CreatedDate = new DateTime(2024, 7, 9, 22, 51, 7, 577, DateTimeKind.Local).AddTicks(7445),
                             Description = "Good Luck!",
                             HotelId = new Guid("28abfeea-3e87-4cbe-8809-4dcb111ea3fd"),
                             PricePerNight = 100,
                             RoomCategoryId = new Guid("c44363be-74a2-43e8-b8be-6a5a69f49a7f"),
                             RoomCommanName = "1A",
                             RoomCount = 4,
+                            StarCount = (byte)3,
                             isDeleted = false,
                             isInternet = true
                         });

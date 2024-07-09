@@ -1,0 +1,77 @@
+﻿@model List<RoomPropertiesDTO>
+
+
+<div class="p-5 m-5">
+
+    <a asp-controller="RoomProperties" asp-action="Add" asp-area="Admin" class="btn btn-primary mb-3 text-white">Add</a>
+
+    <table id="example" class="table table-striped">
+
+        <thead>
+            <tr>
+                <th>RoomCommanName</th>
+                <th>HotelName</th>
+                <th>PricePerNight</th>
+                <th>RoomCount</th>
+                <th>Country</th>
+                <th>Category</th>
+                <th>AdultCount</th>
+                <th>ChildCount</th>
+                <th>BedCount</th>
+                <th>BathCount</th>
+                <th>Internet</th>
+                <th>CreatedDate</th>
+                <th>Proccess</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr name="@item.Id">
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.RoomCommanName</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.Hotel.HotelName</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(item.PricePerNight + "$")</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.RoomCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.Hotel.Country.Name</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.RoomCategory.Name</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.AdultCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.ChildCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.BedCount</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.BathCount</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@(item.isInternet ? "Yes" : "No")</th>
+                    <th style="text-transform:initial !important  letter-spacing:0 !important">@item.CreateDate</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important; display:flex" >
+                        <a asp-area="Admin" asp-controller="RoomPropertie" asp-action="Update" asp-route-roomPropertiesId="@item.Id" class="btn btn-primary btn-sm">
+                            <i class="bx bx-edit text-white"></i>
+                        </a>
+                        <a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="RoomPropertie" asp-action="Delete" asp-route-roomPropertiesId="@item.Id"><i class='bx bxs-message-alt-x'></i></a>
+                    </th>
+
+                </tr>
+
+
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>RoomCommanName</th>
+                <th>HotelName</th>
+                <th>PricePerNight</th>
+                <th>RoomCount</th>
+                <th>Country</th>
+                <th>Category</th>
+                <th>AdultCount</th>
+                <th>ChildCount</th>
+                <th>BedCount</th>
+                <th>BathCount</th>
+                <th>Internet</th>
+                <th>CreatedDate</th>
+                <th>Proccess</th>
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div> 

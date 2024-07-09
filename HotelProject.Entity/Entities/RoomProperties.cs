@@ -20,6 +20,8 @@ namespace HotelProject.Entity.Entities
         public RoomCategory RoomCategory { get; set; }
         public ICollection<Image> Images { get; set;}
         public ICollection<Room> Rooms { get; set;}
+        public byte BathCount { get; set; }
+        public byte BedCount { get; set; }
         public Guid HotelId { get; set; }   
         public Hotel Hotel { get; set; }
     }

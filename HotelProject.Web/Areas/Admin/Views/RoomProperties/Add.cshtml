@@ -1,0 +1,94 @@
+﻿@model RoomPropertiesAddDTO
+
+<div class="container-xxl flex-grow-1 container-p-y">
+
+    <h4 class="py-3 mb-4">
+        <span class="text-muted fw-light meqale"> Room-Properties Management /</span> Room-Properties
+    </h4>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <form asp-area="Admin" asp-controller="RoomProperties" asp-action="Add" method="post">
+                    <div asp-validation-summary="ModelOnly"></div>
+                    <div class="card-body">
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="RoomCommanName" for="defaultFormControlInput" class="form-label">RoomNumber</label>
+                            <input asp-for="RoomCommanName" type="text" class="form-control" id="defaultFormControlInput" placeholder="Room common name..." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="RoomCommanName" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="PricePerNight" for="defaultFormControlInput" class="form-label">Per-Night $</label>
+                            <input asp-for="PricePerNight" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                        </div>
+
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="AdultCount" for="defaultFormControlInput" class="form-label">AdultCount</label>
+                            <input asp-for="AdultCount" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="AdultCount" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="ChildCount" for="defaultFormControlInput" class="form-label">ChildCount</label>
+                            <input asp-for="ChildCount" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="ChildCount" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="RoomCount" for="defaultFormControlInput" class="form-label">RoomCount</label>
+                            <input asp-for="RoomCount" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="RoomCount" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="mt-2" class="form-group">
+                            <label for="defaultFormControlInput" class="form-label">Categories</label>
+                            <select id="categoryList" class="form-control" asp-for="RoomCategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))"></select>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label for="defaultFormControlInput" class="form-label">Countries</label>
+                            <select id="categoryList" class="form-control" asp-for="HotelId" asp-items="@(new SelectList(Model.Hotels,"Id","HotelName"))"></select>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label for="defaultFormControlInput" class="form-label">is there internet?</label>
+                            <select id="categoryList" class="form-control" asp-for="isInternetB">
+                                <option>Yes</option>
+                                <option>No</option>
+                            </select>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="Description" for="defaultFormControlInput" class="form-label">Description</label>
+                            <input asp-for="Description" type="text" class="form-control" id="defaultFormControlInput" placeholder="Room common name..." aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="BedCount" for="defaultFormControlInput" class="form-label">AdultCount</label>
+                            <input asp-for="BedCount" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="BedCount" class="text-danger"></span>
+                        </div>
+
+                        <div class="mt-2" class="form-group">
+                            <label asp-for="BathCount" for="defaultFormControlInput" class="form-label">ChildCount</label>
+                            <input asp-for="BathCount" value="1" min="1" type="number" class="form-control" id="defaultFormControlInput" aria-describedby="defaultFormControlHelp">
+                            <span asp-validation-for="BathCount" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <button class="btn btn-success" type="submit">Create</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

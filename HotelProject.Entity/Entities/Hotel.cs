@@ -17,6 +17,7 @@ namespace HotelProject.Entity.Entities
         public string FaceBookLink { get; set; } = "#";
         public string TwitterLink { get; set; } = "#";
         public string YoutubeLink { get; set; } = "#";
+        public byte StarCount { get; set; }
         public Guid CountryId { get; set; }
         public Country Country { get; set; }
     }

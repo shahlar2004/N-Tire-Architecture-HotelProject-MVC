@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HotelProject.Entity.DTOs.Room;
+using HotelProject.Entity.DTOs.RoomProperties;
 using HotelProject.Entity.Entities;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,7 @@ namespace HotelProject.Service.AutoMapper
         public RoomPropertiesProfile()
         {
             CreateMap<RoomPropertiesDTO,RoomProperties>().ReverseMap();
+            CreateMap<RoomPropertiesAddDTO, RoomProperties>().ReverseMap();
         }
     }
 }

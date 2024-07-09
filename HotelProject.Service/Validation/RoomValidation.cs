@@ -13,7 +13,6 @@ namespace HotelProject.Service.Validation
     {
         public RoomValidation()
         {
-              
         }
     }
 }

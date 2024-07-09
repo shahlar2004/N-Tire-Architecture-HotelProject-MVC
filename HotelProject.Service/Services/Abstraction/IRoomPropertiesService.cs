@@ -1,4 +1,4 @@
-﻿using HotelProject.Entity.DTOs.Room;
+﻿using HotelProject.Entity.DTOs.RoomProperties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +9,7 @@ namespace HotelProject.Service.Services.Abstraction
 {
     public interface IRoomPropertiesService
     {
-        Task< List<RoomPropertiesDTO>> GetAllRoomsIsNotDeleted();
+        Task< List<RoomPropertiesDTO>> GetAllRoomPropertiesIsNotDeleted();
+        Task createRoomProperties (RoomPropertiesAddDTO roomPropertiesAddDTO);
     }
 }

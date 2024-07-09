@@ -19,16 +19,16 @@ namespace HotelProject.Data.Mapping
                 HotelName="Hotel1",
                 Number="+994509755489",
                 Email="hotel1@gmail.com",
-                CountryId= Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}")
-
+                CountryId= Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}"),
+                StarCount=3,
             };  Hotel hotel2 = new Hotel()
             {
                 Id=Guid.Parse("{7612944D-845B-4AB3-9442-09805C12321F}"),
                 HotelName="Hotel2",
                 Number="+994519755489",
                 Email="hotel2@gmail.com",
-                CountryId= Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}")
-
+                CountryId= Guid.Parse("{F2D337CA-74FF-41CD-AEAE-8C152E818759}"),
+                StarCount=5
             };
             builder.HasData(hotel1, hotel2);
         }

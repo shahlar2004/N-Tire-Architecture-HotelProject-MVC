@@ -27,6 +27,8 @@ namespace HotelProject.Data.Mapping
                 HotelId=Guid.Parse("{28ABFEEA-3E87-4CBE-8809-4DCB111EA3FD}"),
                 isInternet=true,
                 isDeleted=false,
+                BathCount=1,
+                BedCount=3
                 
             };
             builder.HasData(roomProperties);
