@@ -21,6 +21,7 @@ namespace HotelProject.Service.Extensions
             services.AddScoped<ICountryService,CountryService>();   
             services.AddScoped<ICategoriesService,CategoriyService>();
             services.AddScoped<IRoomPropertiesService,RoomPropertiesService>();     
+            services.AddScoped<IRoomImgsService,RoomImgsService>();
            // services.AddScoped<IRoomsService,RoomsService>();
             services.AddAutoMapper(assembly);
             services.AddControllersWithViews().AddFluentValidation(opt =>

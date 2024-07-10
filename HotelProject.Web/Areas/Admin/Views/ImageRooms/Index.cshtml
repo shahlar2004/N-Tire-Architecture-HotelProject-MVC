@@ -1,0 +1,38 @@
+﻿@model List<RoomImgsDTO>
+
+    <div class="p-5 m-5">
+    <table id="example" class="table table-striped" style="width:100%;">
+
+        <thead>
+            <tr>
+                <th>RoomPropertyName</th>
+                <th>Process</th>
+            </tr>
+        </thead>
+        <tbody>
+           @foreach (var item in Model)
+            {
+
+                <tr name="@item.Id">
+                    <th style="text-transform:initial !important; letter-spacing:0 !important;">@item.RoomCommanName</th>
+                    <th style="text-transform:initial !important; letter-spacing:0 !important; display:flex; justify-content:space-around">
+                        <a asp-area="Admin" asp-controller="Room" asp-action="Update" asp-route-roomPromName="@item.RoomCommanName" class="btn btn-info btn-sm">
+                           Show-Properties
+                        </a>
+                        <a class="btn btn-green btn-success" asp-area="Admin" asp-controller="ImageRooms" asp-action="ImgsAdd" asp-route-roomPropId="@item.Id">Imgs</a>
+                    </th>
+                </tr>
+            } 
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>RoomPropertyName</th>
+                <th>Process</th>
+        
+            </tr>
+        </tfoot>
+
+    </table>
+
+</div>

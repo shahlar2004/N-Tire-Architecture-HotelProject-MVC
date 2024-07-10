@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HotelProject.Entity.Entities
 {
-    public class RoomProperties:EntityBase
+    public class RoomProperties:EntityBase,IEntityBase
     {
         public string RoomCommanName { get; set; }
         public int PricePerNight { get; set; }

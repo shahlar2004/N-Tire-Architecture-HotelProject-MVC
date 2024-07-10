@@ -7,11 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="7.0.20" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\HotelProject.Core\HotelProject.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Images\" />
   </ItemGroup>
 
 </Project>
